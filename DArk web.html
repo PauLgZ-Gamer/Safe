@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Breach</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+        }
+        .glitch {
+            font-size: 2em;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            animation: glitch 1s infinite;
+            color: red;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red, -2px -2px blue; }
+            50% { text-shadow: -2px -2px red, 2px 2px blue; }
+            100% { text-shadow: 2px -2px red, -2px 2px blue; }
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        .container {
+            margin-top: 30px;
+            border: 2px solid red;
+            padding: 20px;
+            display: inline-block;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .terminal {
+            background-color: black;
+            color: lime;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid lime;
+            width: 80%;
+            margin: auto;
+            text-align: left;
+            height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .flashing {
+            animation: flash 0.5s infinite alternate;
+        }
+        @keyframes flash {
+            0% { background-color: black; color: red; }
+            100% { background-color: red; color: black; }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="glitch">SYSTEM BREACH DETECTED</h1>
+    <p class="warning">Your device is now under remote control!</p>
+    <div class="container">
+        <p>Accessing personal files...</p>
+        <p>Extracting passwords...</p>
+        <p>Remote control enabled...</p>
+    </div>
+    <div class="terminal" id="terminal">
+        Initializing...
+    </div>
+    <script>
+        setTimeout(() => {
+            alert("WARNING! Your system has been compromised!");
+        }, 3000);
+
+        setTimeout(() => {
+            document.body.classList.add("flashing");
+        }, 5000);
+
+        let terminal = document.getElementById("terminal");
+        let messages = [
+            "Scanning system files...",
+            "Downloading sensitive data...",
+            "Injecting remote commands...",
+            "Deleting system files...",
+            "Activating webcam...",
+            "System shutdown initiated..."
+        ];
+        let index = 0;
+        function typeMessage() {
+            if (index < messages.length) {
+                let para = document.createElement("p");
+                para.textContent = messages[index];
+                terminal.appendChild(para);
+                index++;
+                terminal.scrollTop = terminal.scrollHeight;
+                setTimeout(typeMessage, 2000);
+            }
+        }
+        setTimeout(typeMessage, 1000);
+
+        setTimeout(() => {
+            window.location.href = "https://google.com";
+        }, 15000);
+    </script>
+</body>
+</html>
+
+d
